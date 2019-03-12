@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @route.name %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>X</th>
+      <th>Y</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @route.waypoints.each do |waypoint| %>
+      <tr>
+        <td><%= waypoint.x %></td>
+        <td><%= waypoint.y %></td>
+        <td><%= link_to 'Show', waypoint %></td>
+        <td><%= link_to 'Edit', edit_waypoint_path(waypoint) %></td>
+        <td><%= link_to 'Destroy', waypoint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

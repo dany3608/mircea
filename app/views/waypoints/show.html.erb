@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>X:</strong>
+  <%= @waypoint.x %>
+</p>
+
+<p>
+  <strong>Y:</strong>
+  <%= @waypoint.y %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @waypoint.route.id %>
+</p>
+
+<%= link_to 'Edit', edit_waypoint_path(@waypoint) %> |
+<%= link_to 'Back', waypoints_path %>
