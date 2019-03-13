@@ -1,3 +1,18 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        var start = [<%= @route.waypoints.first.to_json(:only => [:x, :y]).html_safe %>];
+
+        var end = [<%= @route.waypoints.last.to_json(:only => [:x, :y]).html_safe %>];
+        
+        var middle = [<%= @route.waypoints.slice(1..-2).to_json(:only => [:x, :y]).html_safe %>];
+        
+        initMap2(start, end, middle);
+    });
+    </script>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -26,6 +41,11 @@
     <% end %>
   </tbody>
 </table>
+
+<h4>Route: </h4>
+<p>
+  <div id="map"></div>
+</p>
 
 <br>
 <%= link_to 'Edit', edit_route_path(@route) %> |

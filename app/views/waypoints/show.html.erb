@@ -1,3 +1,12 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=@waypoint.x%>, <%=@waypoint.y%>)
+    });
+    </script>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,5 +24,14 @@
   <%= @waypoint.route.id %>
 </p>
 
+<h4> Static map </h1>
+<p>
+	<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C#{@waypoint.x},#{@waypoint.y}&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+</p>
+
+<h4> Interactive map </h4>
+<p>
+  <div id="map"></div>
+</p>
 <%= link_to 'Edit', edit_waypoint_path(@waypoint) %> |
 <%= link_to 'Back', waypoints_path %>
